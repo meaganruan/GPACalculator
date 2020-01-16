@@ -1,0 +1,318 @@
+package gpaconverter;
+
+import static java.lang.Math.E;
+import java.text.DecimalFormat;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.geometry.*;
+import java.util.*;
+
+public class GPAConverter extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        //set display
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(25, 25, 25, 25));
+        grid.setHgap(10);
+        grid.setVgap(10);
+        Scene scene = new Scene(grid, 350, 400);
+        primaryStage.setTitle("GPA Calculator");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        //"Enter amount of classes you're taking rn"
+        grid.add(new Label("Number of Classes Taken: "), 0, 2);
+        TextField Classes = new TextField("0");
+        Classes.setPrefWidth(60);
+        grid.add(Classes, 1, 2);
+        //create button to set num of classes
+        Button set = new Button();
+        set.setText("Set");
+        HBox setButton = new HBox(15);
+        setButton.getChildren().add(set);
+        grid.add(setButton, 2, 2);
+        ArrayList<Integer> storeGrades = new ArrayList<Integer>();
+        ArrayList<Integer> total = new ArrayList<Integer>();
+        set.setOnAction(eventonclick -> {
+            //convert text field string to int from classes taken
+            int value = Integer.valueOf(Classes.getText());
+
+            //make an empty arraylist for grades
+            //switch to print grades box of picked classes
+            int g1, g2, g3, g4, g5, g6, g7;
+            g1 = g2 = g3 = g4 = g5 = g6 = g7 = 0;
+
+            switch (value) {
+                case 7: {
+                    //if there are 7, it'll start here and go down
+                    grid.add(new Label("Grade 7: "), 0, 9);
+                    TextField Grade7 = new TextField("0");
+
+                    Grade7.setPrefWidth(60);
+                    grid.add(Grade7, 1, 9);
+
+                    grid.add(new Label("Grade 6: "), 0, 8);
+                    TextField Grade6 = new TextField("0");
+                    Grade6.setPrefWidth(60);
+                    grid.add(Grade6, 1, 8);
+
+                    grid.add(new Label("Grade 5: "), 0, 7);
+                    TextField Grade5 = new TextField("0");
+                    Grade5.setPrefWidth(60);
+                    grid.add(Grade5, 1, 7);
+
+                    grid.add(new Label("Grade 4: "), 0, 6);
+                    TextField Grade4 = new TextField("0");
+                    Grade4.setPrefWidth(60);
+                    grid.add(Grade4, 1, 6);
+
+                    grid.add(new Label("Grade 3: "), 0, 5);
+                    TextField Grade3 = new TextField("0");
+                    Grade3.setPrefWidth(60);
+                    grid.add(Grade3, 1, 5);
+
+                    grid.add(new Label("Grade 2: "), 0, 4);
+                    TextField Grade2 = new TextField("0");
+                    Grade2.setPrefWidth(60);
+                    grid.add(Grade2, 1, 4);
+
+                    grid.add(new Label("Grade 1: "), 0, 3);
+                    TextField Grade1 = new TextField("0");
+                    Grade1.setPrefWidth(60);
+                    grid.add(Grade1, 1, 3);
+
+                    if (Grade7.getText() != "0") {
+                        g7 = Integer.valueOf(Grade7.getText());
+                    }
+                    if (Grade7.getText() != "0") {
+                        g6 = Integer.valueOf(Grade6.getText());
+                    }
+                    if (Grade6.getText() != "0") {
+                        g5 = Integer.valueOf(Grade5.getText());
+                    }
+                    if (Grade5.getText() != "0") {
+                        g4 = Integer.valueOf(Grade4.getText());
+                    }
+                    if (Grade4.getText() != "0") {
+                        g3 = Integer.valueOf(Grade3.getText());
+                    }
+                    if (Grade3.getText() != "0") {
+                        g2 = Integer.valueOf(Grade2.getText());
+                    }
+                    if (Grade2.getText() != "0") {
+                        g1 = Integer.valueOf(Grade1.getText());
+                    }
+
+                    storeGrades.add(g7);
+                }
+                case 6: {
+                    grid.add(new Label("Grade 6: "), 0, 8);
+                    TextField Grade6 = new TextField("0");
+                    Grade6.setPrefWidth(60);
+                    grid.add(Grade6, 1, 8);
+
+                    grid.add(new Label("Grade 5: "), 0, 7);
+                    TextField Grade5 = new TextField("0");
+                    Grade5.setPrefWidth(60);
+                    grid.add(Grade5, 1, 7);
+
+                    grid.add(new Label("Grade 4: "), 0, 6);
+                    TextField Grade4 = new TextField("0");
+                    Grade4.setPrefWidth(60);
+                    grid.add(Grade4, 1, 6);
+
+                    grid.add(new Label("Grade 3: "), 0, 5);
+                    TextField Grade3 = new TextField("0");
+                    Grade3.setPrefWidth(60);
+                    grid.add(Grade3, 1, 5);
+
+                    grid.add(new Label("Grade 2: "), 0, 4);
+                    TextField Grade2 = new TextField("0");
+                    Grade2.setPrefWidth(60);
+                    grid.add(Grade2, 1, 4);
+
+                    grid.add(new Label("Grade 1: "), 0, 3);
+                    TextField Grade1 = new TextField("0");
+                    Grade1.setPrefWidth(60);
+                    grid.add(Grade1, 1, 3);
+
+                    if (Grade6.getText() != "") {
+                        g6 = Integer.valueOf(Grade6.getText());
+
+                    }
+                    storeGrades.add(g6);
+
+                }
+                case 5: {
+                    grid.add(new Label("Grade 5: "), 0, 7);
+                    TextField Grade5 = new TextField("0");
+                    Grade5.setPrefWidth(60);
+                    grid.add(Grade5, 1, 7);
+
+                    grid.add(new Label("Grade 4: "), 0, 6);
+                    TextField Grade4 = new TextField("0");
+                    Grade4.setPrefWidth(60);
+                    grid.add(Grade4, 1, 6);
+
+                    grid.add(new Label("Grade 3: "), 0, 5);
+                    TextField Grade3 = new TextField("0");
+                    Grade3.setPrefWidth(60);
+                    grid.add(Grade3, 1, 5);
+
+                    grid.add(new Label("Grade 2: "), 0, 4);
+                    TextField Grade2 = new TextField("0");
+                    Grade2.setPrefWidth(60);
+                    grid.add(Grade2, 1, 4);
+
+                    grid.add(new Label("Grade 1: "), 0, 3);
+                    TextField Grade1 = new TextField("0");
+                    Grade1.setPrefWidth(60);
+                    grid.add(Grade1, 1, 3);
+
+                    if (Grade2.getText() != "") {
+                        g5 = Integer.valueOf(Grade2.getText());
+
+                    }
+                    storeGrades.add(g5);
+                }
+                case 4: {
+                    grid.add(new Label("Grade 4: "), 0, 6);
+                    TextField Grade4 = new TextField("0");
+                    Grade4.setPrefWidth(60);
+                    grid.add(Grade4, 1, 6);
+
+                    grid.add(new Label("Grade 3: "), 0, 5);
+                    TextField Grade3 = new TextField("0");
+                    Grade3.setPrefWidth(60);
+                    grid.add(Grade3, 1, 5);
+
+                    grid.add(new Label("Grade 2: "), 0, 4);
+                    TextField Grade2 = new TextField("0");
+                    Grade2.setPrefWidth(60);
+                    grid.add(Grade2, 1, 4);
+
+                    grid.add(new Label("Grade 1: "), 0, 3);
+                    TextField Grade1 = new TextField("0");
+                    Grade1.setPrefWidth(60);
+                    grid.add(Grade1, 1, 3);
+
+                    if (Grade4.getText() != "") {
+                        g4 = Integer.valueOf(Grade4.getText());
+
+                    }
+                    storeGrades.add(g4);
+                }
+                case 3: {
+                    grid.add(new Label("Grade 3: "), 0, 5);
+                    TextField Grade3 = new TextField("0");
+                    Grade3.setPrefWidth(60);
+                    grid.add(Grade3, 1, 5);
+
+                    grid.add(new Label("Grade 2: "), 0, 4);
+                    TextField Grade2 = new TextField("0");
+                    Grade2.setPrefWidth(60);
+                    grid.add(Grade2, 1, 4);
+
+                    grid.add(new Label("Grade 1: "), 0, 3);
+                    TextField Grade1 = new TextField("0");
+                    Grade1.setPrefWidth(60);
+                    grid.add(Grade1, 1, 3);
+
+                    if (Grade3.getText() != "") {
+                        g3 = Integer.valueOf(Grade2.getText());
+
+                    }
+                    storeGrades.add(g3);
+
+                }
+                case 2: {
+                    grid.add(new Label("Grade 2: "), 0, 4);
+                    TextField Grade2 = new TextField("0");
+                    Grade2.setPrefWidth(60);
+
+                    grid.add(new Label("Grade 1: "), 0, 3);
+                    TextField Grade1 = new TextField("0");
+                    Grade1.setPrefWidth(60);
+                    grid.add(Grade1, 1, 3);
+                    grid.add(Grade2, 1, 4);
+
+                    if (Grade2.getText() != "") {
+                        System.out.println(Grade2.getText());
+                        //g2=Integer.valueOf(Grade2.getText());
+
+                    }
+                    storeGrades.add(g2);
+                    System.out.println(storeGrades);
+                    //calculate 
+                    HBox buttonBox = new HBox(15);
+                    Button calculate = new Button();
+                    calculate.setText("Calculate GPA");
+
+                    buttonBox.getChildren().add(calculate);
+                    grid.add(buttonBox, 0, 12);
+                    //create math for average
+
+                    calculate.setOnAction(e -> {
+                        Label myOutput = new Label();
+                        myOutput.setAlignment(Pos.BOTTOM_LEFT);
+                        grid.add(myOutput, 0, 11);
+
+//            myOutput.setText("GPA: " + storeGrades);
+//            
+//                    if(Grade7.getText() != "0")
+//                     total.add(Integer.valueOf(Grade7.getText()));
+//                    if(Grade6.getText() != "0")
+//                     total.add(Integer.valueOf(Grade6.getText()));
+//                    if(Grade5.getText() != "0")
+//                     total.add(Integer.valueOf(Grade5.getText()));
+//                    if(Grade4.getText() != "0")
+//                     total.add(Integer.valueOf(Grade4.getText()));
+//                    if(Grade3.getText() != "0")
+//                     total.add(Integer.valueOf(Grade3.getText()));
+                        if (Grade2.getText() != "0") {
+                            total.add(Integer.valueOf(Grade2.getText()));
+                        }
+                        if (Grade1.getText() != "0") {
+                            total.add(Integer.valueOf(Grade1.getText()));
+                        }
+
+                        System.out.println("total: " + total);
+                        myOutput.setText("GPA: " + total.get(0));
+                    });
+                }
+                case 1: {
+                    grid.add(new Label("Grade 1: "), 0, 3);
+                    TextField Grade1 = new TextField("0");
+                    Grade1.setPrefWidth(60);
+                    grid.add(Grade1, 1, 3);
+                    Grade1.setText("");
+                    //if "" then cant convert
+
+                    if (Grade1.getText() == "") {
+                        g1 = Integer.valueOf(Grade1.getText());
+                    }
+                    storeGrades.add(g1);
+                }
+//                default: {
+//                    Label myOutput = new Label();
+//                    grid.add(myOutput, 0, 0);
+//                    myOutput.setText("Invalid Number");
+//                }
+            }
+
+        });
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+
+    }
+
+}
